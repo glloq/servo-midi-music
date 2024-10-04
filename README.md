@@ -1,5 +1,6 @@
 > [!NOTE]
-> code non testé pour l'instant !
+> partie du projet completé 
+> mais code non testé pour l'instant !
 
 # servo-midi-music
 
