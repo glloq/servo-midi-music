@@ -8,7 +8,7 @@ Tout les reglages seront regroupé dans le fichier settings.h. (le nombre de ser
 La gestion des servomoteurs est dynamique et peut s'adapter à différents nombres de notes grâce à l'utilisation de plusieurs PCA9685 en fonction du besoin.
 les servomoteurs seront branché en commencant avec la note la plus grave sur le pin 0 du premier pca utilisé, la seconde note sur le pin 1 du pca et ainsi de suite 
 <img src="https://github.com/glloq/servo-midi-music/blob/main/img/SchemaElec.png" alt="pluck" width=100% height=100%/>  
-Pour limiter le bruit des servomoteurs nous utilisarons la braoche OE des pca pour desactiver l'alimentation des servomoteurs lorsqu'ils ne sont pas utilisé
+Pour limiter le bruit des servomoteurs nous utiliserons la broche OE des pca pour desactiver l'alimentation des servomoteurs lorsqu'ils ne sont pas utilisé
 
 
 # applications
@@ -46,3 +46,9 @@ Il suffit d'adapter les reglages suiavnt dans settings.h :
 ce codes et contruit pour actionner le servomoteur dans un sens a la reception d'un message midi noteOn puis remet le servomoteur a la position initale après un certain temps defini dans settings.h
 les parametres sont les meme que dans le code pour ServoOnOff avec le temps d'impulsion avant de remettre de servo a sa position initale (TIME_ACTIVE) 
   
+
+# Calibration des servomoteurs
+
+Afin de simplifier l'utilisation des code il est possible d'utiliser le code dans le fichier calibration afin de connaitre les position de chaque servomoteurs.
+Il suffit de renseigner le nombre de servomoteur utilisé puis d'uploader le code dans l'arduino. 
+on pourra modifier la position de chaque servomoteur l'un après l'autre depuis la console serial de l'IDE arduino, une fois que tout les servomoteurs seront initialisé, il faudra copier coller le tableau des angles dans le fichier settings.h utlisé
