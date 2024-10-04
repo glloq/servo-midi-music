@@ -5,7 +5,7 @@ ServoController::ServoController() {
   int numPcaNeeded = static_cast<int>(ceil(static_cast<double>(NUM_SERVOS) / NUM_SERVOS_PER_PCA));
 
   if (numPcaNeeded > MAX_NUM_PCA9685) {
-    Serial.println("Erreur : Nombre de PCA9685 nécessaires dépasse la limite maximale");
+    Serial.println("Erreur : Nombre de servo nécessaires dépasse la limite maximale");
     return;
   }
 
