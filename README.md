@@ -19,8 +19,8 @@ il y a 3 types d'actions pour les messages notesOn/noteOff :
 - Impulsion => le servo se deplace d'un certain angle a noteOn et revient a la position zero après un certain temps
 
 ## ServoPluck
-ce codes et contruit pour gratter des cordes (lyre, harpe,etc) ou autres systeme de grattage et viendra alterner le sens de grattage a chaque message noteOn.
-<img src="https://github.com/glloq/servo-midi-music/blob/main/img/grattage.png" alt="pluck" width=80% height=80%/>  
+ce codes et contruit pour gratter des cordes (lyre, harpe,etc) ou autres systeme de grattage et viendra alterner le sens de grattage a chaque message noteOn.  
+<img src="https://github.com/glloq/servo-midi-music/blob/main/img/grattage.png" alt="pluck" width=40% height=40%/>  
 
 Il suffit d'adapter les reglages suiavnt dans settings.h :
 - le nombre de servo utilisé ( NUM_SERVOS ) 
@@ -30,8 +30,8 @@ Il suffit d'adapter les reglages suiavnt dans settings.h :
 
 ## ServoOnOff
 
-ce codes et contruit pour actionner le servomoteur dans un sens a la reception d'un message midi noteOn puis remet le servomoteur a la position initale a la reception d'un message noteOff
-<img src="https://github.com/glloq/servo-midi-music/blob/main/img/OnOff.png" alt="OnOff" width=80% height=80%/>  
+ce codes et contruit pour actionner le servomoteur dans un sens a la reception d'un message midi noteOn puis remet le servomoteur a la position initale a la reception d'un message noteOff  
+<img src="https://github.com/glloq/servo-midi-music/blob/main/img/OnOff.png" alt="OnOff" width=30% height=30%/>  
 
 Il suffit d'adapter les reglages suiavnt dans settings.h :
 - le nombre de servo utilisé ( NUM_SERVOS ) 
