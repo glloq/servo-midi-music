@@ -1,5 +1,5 @@
 > [!NOTE]
-> pas fini!
+> code non testé pour l'instant !
 
 # servo-midi-music
 
