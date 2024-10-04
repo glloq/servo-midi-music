@@ -50,5 +50,7 @@ les parametres sont les meme que dans le code pour ServoOnOff avec le temps d'im
 # Calibration des servomoteurs
 
 Afin de simplifier l'utilisation des code il est possible d'utiliser le code dans le fichier calibration afin de connaitre les position de chaque servomoteurs.
-Il suffit de renseigner le nombre de servomoteur utilisé puis d'uploader le code dans l'arduino. 
-on pourra modifier la position de chaque servomoteur l'un après l'autre depuis la console serial de l'IDE arduino, une fois que tout les servomoteurs seront initialisé, il faudra copier coller le tableau des angles dans le fichier settings.h utlisé
+Il suffit de renseigner le nombre de servomoteur utilisé puis d'uploader le code dans l'arduino.   
+
+
+on pourra modifier la position de chaque servomoteur l'un après l'autre depuis la console serial de l'IDE arduino, une fois que tout les servomoteurs seront initialisé, il faudra copier coller le tableau des angles dans le fichier settings.h utlisé 
