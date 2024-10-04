@@ -33,16 +33,13 @@ int Instrument::getServo(uint8_t midiNote) {
   }  
   //-------------------------------  diatonique   -------------------------------------------------------------------
   else{
-    // il suffit de verifier si c'est dans un interval de notes
-    if (midiNote > FIRST_MIDI_NOTE  && midiNote < FIRST_MIDI_NOTE+NUM_SERVOS){
-    // puis de verifier dans le tabeau 
+    // on vient verifier dans le tableau si on peut jouer la note
       for (int i=0; i<NUM_SERVOS;i++){
         if (MidiServoMapping[i]==midiNote){
             return i;//si on trouve la note dans le tableau de correspondance on renvoit la position 
         }
       }
       return -1;// on renvoit -1 si la note n'est pas jouable 
-    }
   }
 }
 
