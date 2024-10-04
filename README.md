@@ -43,8 +43,8 @@ Il suffit d'adapter les reglages suiavnt dans settings.h :
 
 ## ServoImpulse
 
-ce codes et contruit pour actionner le servomoteur dans un sens a la reception d'un message midi noteOn puis remet le servomoteur a la position initale après un certain temps defini dans settings.h
-les parametres sont les meme que dans le code pour ServoOnOff avec le temps d'impulsion avant de remettre de servo a sa position initale (TIME_ACTIVE) 
+ce codes et contruit pour actionner le servomoteur dans un sens a la reception d'un message midi noteOn puis remet le servomoteur a la position initale après un certain temps defini dans settings.h  
+les parametres sont les meme que dans le code pour ServoOnOff avec le temps d'impulsion avant de remettre de servo a sa position initale (TIME_IMPULSE) 
   
 
 # Calibration des servomoteurs
