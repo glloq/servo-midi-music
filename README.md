@@ -7,7 +7,7 @@ l'objectif est d'avoir un code pour actionner des servomoteurs en utilisant des 
 Tout les reglages seront regroupé dans le fichier settings.h. (le nombre de servo a utiliser, les angles de servo, parametres de controle des servo pour le pca, le type de gamme utilisé, etc.  )
 La gestion des servomoteurs est dynamique et peut s'adapter à différents nombres de notes grâce à l'utilisation de plusieurs PCA9685 en fonction du besoin.
 les servomoteurs seront branché en commencant avec la note la plus grave sur le pin 0 du premier pca utilisé, la seconde note sur le pin 1 du pca et ainsi de suite 
-<img src="https://github.com/glloq/servo-midi-music/blob/main/img/SchemaElec.png" alt="pluck" width=80% height=80%/>  
+<img src="https://github.com/glloq/servo-midi-music/blob/main/img/SchemaElec.png" alt="pluck" width=100% height=100%/>  
 Pour limiter le bruit des servomoteurs nous utilisarons la braoche OE des pca pour desactiver l'alimentation des servomoteurs lorsqu'ils ne sont pas utilisé
 
 
