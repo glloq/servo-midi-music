@@ -1,12 +1,12 @@
 /***********************************************************************************************
 ----------------------------         SETTINGS               ------------------------------------
 ************************************************************************************************
-fichiers pour la configuration du systeme 
-les notes sont branché dans l'ordre de la plus petite note a la plus grande, du premier pca eu dernier
- il suffit de donner la premiere note midi jouable
- le nombre de servo utilisé
- si on est en diatonique (8 notes par octaves) mettre DIATONIC_OCTAVE a 1 sinon 0 (pour 12 notes par octave)
- uploader, executer, copier/coller le resultat de la calibration de l'angle initial des servo (pour avoir l'angle ideal du mute avec le pick)
+Configuration file for the system
+Notes are connected in order from the lowest to the highest note, from the first PCA to the last
+ Simply provide the first playable MIDI note
+ The number of servos used
+ If diatonic (8 notes per octave), set DIATONIC_OCTAVE to 1, otherwise 0 (for 12 notes per octave)
+ Upload, execute, copy/paste the calibration result for the initial angle of the servos (to get the ideal mute angle with the pick)
 ************************************************************************************************/
 #ifndef SETTINGS_H
 #define SETTINGS_H
@@ -14,28 +14,28 @@ les notes sont branché dans l'ordre de la plus petite note a la plus grande, du
 #define DEBUG 1
 
 /*--------------------------------------------------------
-                  reglages a modifier 
+                  Settings to modify
 --------------------------------------------------------*/
-#define NUM_SERVOS 16 // jusqu'a 128 servomoteurs (8pca) pour toutes les notes midi et 70 notes pour le diatonique
+#define NUM_SERVOS 16 // Up to 128 servomotors (8 PCAs) for all MIDI notes and 70 notes for diatonic
 #define FIRST_MIDI_NOTE 55
-#define DIATONIC_OCTAVE 1 // mettre a 1 si l'instrument utilise un accordage diatonique a 0 si chromatique
-const uint16_t initialAngles[NUM_SERVOS] = {//copier le resultat de la calibration ici
+#define DIATONIC_OCTAVE 1 // Set to 1 if the instrument uses diatonic tuning, 0 if chromatic
+const uint16_t initialAngles[NUM_SERVOS] = {// Copy the calibration result here
   90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90
 };
 
-const bool directionServo[NUM_SERVOS] = { // inverse le sens de rotation si a 0
+const bool directionServo[NUM_SERVOS] = { // Reverse rotation direction if 0
   1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 };
-#define PLUCK_ANGLE 20 //angle deplacement pour note On
+#define PLUCK_ANGLE 20 // Movement angle for note On
 
 
 /*--------------------------------------------------------
-          reglages des PCA9685
+          PCA9685 settings
 --------------------------------------------------------*/
-#define OE_PIN 4 // pin de sortie de l'arduino pour la broche OE
-#define TIME_ACTIVE 500 // temps en ms pour le deplacement du servomoteur avant de couper l'alimentation des servos
+#define OE_PIN 4 // Arduino output pin for the OE pin
+#define TIME_ACTIVE 500 // Time in ms for servo movement before cutting power to servos
 
-//reglages pour des servo sg90 
+// Settings for SG90 servos
 #define SERVO_MIN_ANGLE 0
 #define SERVO_MAX_ANGLE 180
 const uint16_t SERVO_PULSE_MIN = 150;
@@ -43,15 +43,15 @@ const uint16_t SERVO_PULSE_MAX = 600;
 const uint16_t SERVO_FREQUENCY = 50;
 
 //===============================================================================
-//============= stuffs usefull for the code 
+//============= Useful stuff for the code
 
-//gestion des adresses des pca 
-#define PCA9685_ADDRESSES {0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47}  // Adresses I2C des PCA9685
-#define MAX_NUM_PCA9685 8  // Nombre maximal de PCA9685 supportés
-#define NUM_SERVOS_PER_PCA 16 //nombre de servo max par pca
+// PCA address management
+#define PCA9685_ADDRESSES {0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47}  // I2C addresses of PCA9685
+#define MAX_NUM_PCA9685 8  // Maximum number of PCA9685 supported
+#define NUM_SERVOS_PER_PCA 16 // Maximum number of servos per PCA
 
 /*--------------------------------------------------------
-gestion des instruments diatonique (8 notes par octaves)
+Diatonic instrument management (8 notes per octave)
 --------------------------------------------------------*/
 const uint8_t MidiDiatonicServoMapping[] = {
     0, 2, 4, 5, 7, 9, 11, // Octave 0
