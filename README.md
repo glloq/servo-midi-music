@@ -1,6 +1,5 @@
 > [!NOTE]
-> Project partially completed
-> but code not tested yet!
+> Project completed but code not tested yet!
 
 # servo-midi-music
 
