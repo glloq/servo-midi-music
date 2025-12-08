@@ -1,18 +1,18 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
-// MODIFIER CETTE VARIABLE SEULEMENT POUR LE NOMBRE TOTAL DE SERVOS
-const int totalServos = 32;  // Maximum 128 (8 PCA9685 à 16 servos chacun)
+// ONLY MODIFY THIS VARIABLE FOR THE TOTAL NUMBER OF SERVOS
+const int totalServos = 32;  // Maximum 128 (8 PCA9685 at 16 servos each)
 
-const int angleInit = 90;  // angle initialisation de tout les servomoteurs utilisé avant calibration 
+const int angleInit = 90;  // Initialization angle for all servomotors used before calibration
 
-// Parametrtes des pca pour les servo utilisé 
+// PCA parameters for the servos used
 #define MIN_PULSE_WIDTH  150
 #define MAX_PULSE_WIDTH  600
-#define SERVOMIN  150  // Valeur minimum du pulse
-#define SERVOMAX  600  // Valeur maximum du pulse
+#define SERVOMIN  150  // Minimum pulse value
+#define SERVOMAX  600  // Maximum pulse value
 
-// Créez jusqu'à 8 modules PCA9685
+// Create up to 8 PCA9685 modules
 Adafruit_PWMServoDriver pca9685[8] = {
   Adafruit_PWMServoDriver(0x40),
   Adafruit_PWMServoDriver(0x41),
@@ -26,27 +26,27 @@ Adafruit_PWMServoDriver pca9685[8] = {
 
 
 
-const int servosPerPCA = 16;  // Nombre de servos par module PCA9685
-int angles[128];  // Tableau des angles pour tous les servos
+const int servosPerPCA = 16;  // Number of servos per PCA9685 module
+int angles[128];  // Array of angles for all servos
 int currentServo = 0;
 bool allInitialized = false;
 
 void setup() {
   Serial.begin(9600);
 
-  // Initialisation des PCA9685 selon le nombre de servos à utiliser
+  // Initialize PCA9685 modules according to the number of servos to use
   for (int i = 0; i < (totalServos + servosPerPCA - 1) / servosPerPCA; i++) {
     pca9685[i].begin();
-    pca9685[i].setPWMFreq(60);  // Fréquence recommandée pour les servos
+    pca9685[i].setPWMFreq(60);  // Recommended frequency for servos
   }
 
-  // Initialisation des servos à 90 degrés
+  // Initialize servos to 90 degrees
   for (int i = 0; i < totalServos; i++) {
     angles[i] = 90;
     setServoAngle(i, angles[i]);
   }
 
-  Serial.println("Saisissez un angle pour le servomoteur 0 :");
+  Serial.println("Enter an angle for servomotor 0:");
 }
 
 void loop() {
@@ -57,35 +57,35 @@ void loop() {
     if (angle >= 0 && angle <= 180) {
       angles[currentServo] = angle;
       setServoAngle(currentServo, angle);
-      Serial.print("Angle du servomoteur ");
+      Serial.print("Angle of servomotor ");
       Serial.print(currentServo);
-      Serial.print(" : ");
+      Serial.print(": ");
       Serial.println(angle);
-      Serial.println("Saisissez un nouvel angle ou tapez 'next' pour passer au servomoteur suivant.");
+      Serial.println("Enter a new angle or type 'next' to move to the next servomotor.");
     } else if (input == "next") {
       currentServo++;
       if (currentServo < totalServos) {
-        Serial.print("Saisissez un angle pour le servomoteur ");
+        Serial.print("Enter an angle for servomotor ");
         Serial.println(currentServo);
       } else {
-        Serial.println("Tous les servos ont été initialisés.");
+        Serial.println("All servos have been initialized.");
         allInitialized = true;
       }
     }
 
     if (allInitialized) {
-      Serial.println("Tableau des angles à copier dans settings.h :");
+      Serial.println("Angle array to copy into settings.h:");
       Serial.print("[ ");
       for (int i = 0; i < totalServos; i++) {
         Serial.print(angles[i]);
         if (i < totalServos - 1) {
-          Serial.print(", ");  // Ajouter une virgule entre les valeurs
+          Serial.print(", ");  // Add a comma between values
         }
       }
       Serial.println(" ]");
       allInitialized = false;
       currentServo = 0;
-      Serial.println("Saisissez un nouvel angle pour le servomoteur 0 pour recommencer.");
+      Serial.println("Enter a new angle for servomotor 0 to restart.");
     }
   }
 }
@@ -94,7 +94,7 @@ void setServoAngle(int servoNum, int angle) {
   int pcaIndex = servoNum / servosPerPCA;
   int servoIndex = servoNum % servosPerPCA;
 
-  // Convertir l'angle en valeur PWM
+  // Convert angle to PWM value
   int pulseLength = map(angle, 0, 180, SERVOMIN, SERVOMAX);
   pca9685[pcaIndex].setPWM(servoIndex, 0, pulseLength);
 }
